@@ -11,7 +11,7 @@ const Storefront = () => {
       <Testimonials />
       {/* Banners
       Mission
-      Testimonials*/}
+      Testimonials*/}           
     </div>
   );
 };

@@ -8,8 +8,9 @@ function App() {
     <>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />} />
-        <Route index path="/" element={<Storefront />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Storefront />} />
+        </Route>
       </Routes>
     </BrowserRouter>
     </>

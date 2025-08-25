@@ -1,17 +1,16 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../shared/components/Navbar';
+import Footer from '../shared/components/Footer'
 
 
 const Layout = () => {
   return (
-    <div className='flex flex-col max-w-screen'>
-      <div className=''>
+    <div className=''>
+      {/* <div className=''>
         <Navbar />
-      </div>
-      <main className='flex-grow max-w-screen'>
-          <Outlet />                  
-      </main>
-      {/* Footer */}
+      </div> */}
+      <Outlet />
+      <Footer />
     </div>
   );
 };
