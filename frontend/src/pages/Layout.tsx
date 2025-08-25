@@ -5,10 +5,8 @@ import Footer from '../shared/components/Footer'
 
 const Layout = () => {
   return (
-    <div className=''>
-      {/* <div className=''>
-        <Navbar />
-      </div> */}
+    <div className=''>      
+        <Navbar />      
       <Outlet />
       <Footer />
     </div>
