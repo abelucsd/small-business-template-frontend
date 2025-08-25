@@ -84,8 +84,7 @@ const Testimonials = () => {
       <h2 className="container mx-auto">Reviews</h2>
       <Slider {...settings} className="container mx-auto pb-10">
         {reviewCards.map((card) =>
-          <Card className="border size-60 p-10 gap-2 text-start rounded-xl place-self-center">
-            <p>{card.rating}</p>
+          <Card className="border size-60 p-10 gap-2 text-start rounded-xl place-self-center">            
             <div>
               <p>{card.title}</p>
               <p className="line-clamp-4">{card.text}</p>
