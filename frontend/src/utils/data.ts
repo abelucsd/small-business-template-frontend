@@ -1,3 +1,5 @@
+export const API_URL = '';
+
 export const navList = [
     {name: "Products", link:"/Products"},
     {name: "About", link:"/About"},
