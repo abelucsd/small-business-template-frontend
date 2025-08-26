@@ -24,13 +24,13 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/Products" element={<Products />} />            
           </Route>
-          <Route path="/Admin/" element={<AdminLayout />}>
+          {/* <Route path="/Admin/" element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="/Products/view" element={<ViewProducts />} />
             <Route path="/Products/add" element={<CreateProduct />} />
             <Route path="/Categories/view" element={<ViewCategories />} />
             <Route path="/Categories/add" element={<CreateCategory />} />            
-          </Route>
+          </Route> */}
         </Routes>
       </BrowserRouter>
     </>
