@@ -20,6 +20,12 @@ export const productsDropdownLinks = [
     {name: "Load Products", link: "/Products/batch_load"}
 ]
 
+export const categoriesDropdownLinks = [
+    {name: "View Categories", link: "/Categories/view"},
+    {name: "Add Category", link: "/Categories/add"},
+    {name: "Load Categories", link: "/Categories/batch_load"}
+]
+
 export const customerDropdownLinks = [
     {name: "View Customers", link: "/customers/view"},    
 ]
