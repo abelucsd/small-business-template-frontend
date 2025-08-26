@@ -1,5 +1,6 @@
 export const navList = [
-    {name: "Services", link:"#services"},
-    {name: "About", link:"#about"},
-    {name: "Contact", link:"#contact"},
+    {name: "Products", link:"/Products"},
+    {name: "About", link:"/About"},
+    {name: "Contact", link:"/Contact"},
+    {name: "Login", link:"/Login"},
 ];

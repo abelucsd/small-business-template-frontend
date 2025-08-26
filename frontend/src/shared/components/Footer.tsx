@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { navList } from "../../utils/data";
 
 const Footer = () => {
@@ -14,7 +15,7 @@ const Footer = () => {
         </div>
         <ul className="flex flex-col gap-4">
           {navList.map((item, index) => 
-            <h4 key={index}>{item.name}</h4>
+            <Link to={item.link}><h4 key={index}>{item.name}</h4></Link>
           )}
         </ul>
       </div>
