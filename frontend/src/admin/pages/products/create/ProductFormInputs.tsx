@@ -1,12 +1,12 @@
 import type { FieldErrors, UseFormRegister } from "react-hook-form"
 import type { ProductFormValues } from "./types";
 
-interface LoginFormInputs {
+interface ProductFormInputsProps {
   register: UseFormRegister<ProductFormValues>;
   errors: FieldErrors<ProductFormValues>;
 };
 
-const ProductFormInputs = ({register, errors}: LoginFormInputs) => {
+const ProductFormInputs = ({register, errors}: ProductFormInputsProps) => {
   return (
     <div className="flex flex-col gap-8 w-full">
       <label>
