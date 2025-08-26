@@ -8,9 +8,11 @@ interface InformationalLayout {
 const InformationalLayout = ({title, children}: InformationalLayout) => {
   return (
     <div className={`container mx-auto`}>
-      <h1>{title}</h1>
-      <div>
-        {children}
+      <div className=" ml-4 mr-4 md:ml-0 md:mr-0">
+        <h1>{title}</h1>
+        <div className="flex flex-col">
+          {children}
+        </div>
       </div>
     </div>
   );

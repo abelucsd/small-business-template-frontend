@@ -69,6 +69,21 @@
       font-size: var(--text-sm);
   }
 
+  /* edit width */
+  .btn-login {
+    box-shadow: var(--shadow-xs);    
+    border: 1px solid black;    
+    background-color: var(--color-primary);
+    padding-inline: --spacing(3);
+    padding-block: --spacing(1);
+    color: white;
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-white-variant);
+      }
+    }
+  }
+
   .btn-primary {
     box-shadow: var(--shadow-md);
     border-radius: calc(infinity * 1px);
@@ -81,7 +96,7 @@
             background-color: var(--color-primary-variant);
         }
     }
-  }
+  }  
 
   .btn-secondary {    
     box-shadow: var(--shadow-xs);
