@@ -6,6 +6,7 @@ import Contact from './pages/informational/Contact';
 import PrivacyPolicy from './pages/informational/PrivacyPolicy';
 import TermsAndConditions from './pages/informational/TermsAndConditions';
 import Login from './pages/auth/Login';
+import Products from './pages/products/Products';
 
 function App() {  
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/Privacy_Policy" element={<PrivacyPolicy />} />
             <Route path="/Terms_And_Conditions" element={<TermsAndConditions />} />
             <Route path="/Login" element={<Login />} />
+            <Route path="/Products" element={<Products />} />
             
           </Route>
         </Routes>
