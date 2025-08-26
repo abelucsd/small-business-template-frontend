@@ -1,6 +1,9 @@
 export type Product = {
   name: string;
   price: number;
+  category: string;
+  src: string;
+  alt: string;
 }
 
 export type TableContextValue = {
