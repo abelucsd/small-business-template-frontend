@@ -11,7 +11,7 @@ interface ProductDetailProps {
 const ProductDetail = ({product}: ProductDetailProps) => {
   return (
     <div>
-      {/*        
+      {/*
       Related Products -- pick a few products in the same category.
       */}
 

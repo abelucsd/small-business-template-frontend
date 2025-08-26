@@ -1,7 +1,4 @@
-import React from 'react';
 import Card from '../../../shared/components/Card';
-
-type Props = {}
 
 // TODO: Get from backend
 const featuredProducts = [
