@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { logo } from "../../utils/data";
 import { navItems } from "../../utils/data";
-import { productsDropdownLinks } from "../../utils/data";
+import { productsDropdownLinks, categoriesDropdownLinks } from "../../utils/data";
 import DropdownLinks from "./DropdownLinks";
 import { useDropdownContext } from "../providers/DropdownProvider";
 
@@ -23,7 +23,7 @@ const Sidenav = ({styles, onLinkClick}: SidenavProps) => {
       className={`    
         ${styles}             
         flex flex-col gap-8 shadow-xs 
-        border-r border-[#e5e7eb] w-64 h-full px-6 bg-[var(--bg-nav)]
+        border-r border-[#e5e7eb] w-64 h-full px-6 bg-[var(--bg-nav-admin)]
       `}
       >
       <h1>{logo}</h1>
@@ -44,6 +44,14 @@ const Sidenav = ({styles, onLinkClick}: SidenavProps) => {
           <DropdownLinks 
             title={`Products`} 
             links={productsDropdownLinks} 
+            onLinkClick={onLinkClick}            
+          />
+        </li>
+        
+        <li>
+          <DropdownLinks 
+            title={`Categories`} 
+            links={categoriesDropdownLinks} 
             onLinkClick={onLinkClick}            
           />
         </li>

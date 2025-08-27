@@ -38,6 +38,12 @@ export function UpdateCategoryModal({ isOpen, onClose, category, onUpdate }: Upd
     }
   };
 
+  if (category === null) {
+    return (
+      <></>
+    )
+  }
+
   return (
     <Dialog open={isOpen} onClose={onClose} className="fixed inset-0 z-10 overflow-y-auto">      
 

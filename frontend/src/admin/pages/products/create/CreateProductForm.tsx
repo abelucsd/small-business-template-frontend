@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import type { SubmitHandler } from 'react-hook-form';
 import type { ProductFormValues } from "./types";
 import ProductFormInputs from "./ProductFormInputs";
+import {createProduct} from '../api/productsTableAPI';
 
 
 const CreateProductForm = () => {
@@ -11,9 +12,12 @@ const CreateProductForm = () => {
     formState: {errors}
   } = useForm<ProductFormValues>();
 
-  const onSubmit: SubmitHandler<ProductFormValues> = (data) => {
-    console.log(data)
-    // api request
+  const onSubmit: SubmitHandler<ProductFormValues> = async (data) => {    
+    try {
+      await createProduct(data);
+    } catch (error) {
+      alert('Error creating product');
+    }
   };
 
   return (

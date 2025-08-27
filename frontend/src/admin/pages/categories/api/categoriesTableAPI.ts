@@ -1,6 +1,12 @@
 import type { QueryFunctionContext } from '@tanstack/react-query';
 import type { Category } from '../types';
 import apiClient from '../../../shared/api/apiClient';
+import type { CategoryFormValues } from '../create/types';
+
+export const createCategory = async(body: CategoryFormValues) => {
+  const response = await apiClient.post('/categories/', body);
+  return response.data;
+};
 
 export const getCategories = async ({ queryKey }: QueryFunctionContext<[string, number, number, string]> ) 
   : Promise<{ data: Category[]; total: number }> => {
@@ -13,9 +19,9 @@ export const getCategories = async ({ queryKey }: QueryFunctionContext<[string, 
       limit: pageSize,
       search: searchQuery,
     },
-  });
-  
-  return response.data;
+  });  
+
+  return {data: response.data, total: response.data.length}
 };
 
 

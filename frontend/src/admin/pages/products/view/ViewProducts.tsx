@@ -10,6 +10,7 @@ import TableSearch from '../../../shared/components/table/TableSearch';
 import TableCore from '../../../shared/components/table/TableCore';
 import TablePagination from '../../../shared/components/table/TablePagination';
 import TablePageSizeSelector from '../../../shared/components/table/TablePageSizeSelector';
+import { useEffect } from 'react';
 
 const ViewProducts = () => {
   const {
@@ -21,7 +22,7 @@ const ViewProducts = () => {
     pageSize,
     searchQuery,
     isUpdateOpen,
-    selectedProduct,
+    selectedProduct,    
     isDialogOpen,
     setPageIndex,
     setPageSize,
@@ -108,6 +109,10 @@ const ViewProducts = () => {
       ),
     })
   ];
+
+  useEffect(() => {
+    console.log(products)
+  }, [])
 
 
   return (
