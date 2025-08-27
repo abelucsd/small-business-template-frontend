@@ -1,13 +1,13 @@
 export const API_URL = import.meta.env.VITE_API_URL;
 // export const API_URL = 'http://localhost:3000/api';
 
-export { default as avatarImg }  from '../assets/images/avatar.jpg';
+export { default as avatarImg }  from '../../assets/images/avatar.jpg';
 export const logo = "DEMO";
 export const adminName = 'Blue Water';
 
 
 export const navItems = [
-    {name: "Dashboard", link: "/"},
+    {name: "Dashboard", link: "/admin"},
 ];
 
 export const trendsDropdownLinks = [
@@ -15,15 +15,15 @@ export const trendsDropdownLinks = [
 ]
 
 export const productsDropdownLinks = [
-    {name: "View Products", link: "/Products/view"},
-    {name: "Add Product", link: "/Products/add"},
-    {name: "Load Products", link: "/Products/batch_load"}
+    {name: "View Products", link: "/admin/Products/view"},
+    {name: "Add Product", link: "/admin/Products/add"},
+    // {name: "Load Products", link: "/admin/Products/batch_load"}
 ]
 
 export const categoriesDropdownLinks = [
-    {name: "View Categories", link: "/Categories/view"},
-    {name: "Add Category", link: "/Categories/add"},
-    {name: "Load Categories", link: "/Categories/batch_load"}
+    {name: "View Categories", link: "/admin/Categories/view"},
+    {name: "Add Category", link: "/admin/Categories/add"},
+    // {name: "Load Categories", link: "/admin/Categories/batch_load"}
 ]
 
 export const customerDropdownLinks = [
