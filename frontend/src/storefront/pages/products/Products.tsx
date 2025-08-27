@@ -23,7 +23,7 @@ const ViewProducts = () => {
 
 
   return (
-    <div className="page-container">
+    <div className="page-container w-full">
       <h1 className="">Products</h1>
       <TableBase
         data={products}
@@ -35,16 +35,18 @@ const ViewProducts = () => {
         isLoading={isLoading}
         isError={isError}
       >
-        <TableSearch searchQuery={searchQuery} onChange={setSearchQuery}/>
+        <div className='flex flex-col items-end'>
+          <TableSearch searchQuery={searchQuery} onChange={setSearchQuery}/>
+        </div>
         <TableCore
-          renderProduct={(product) => 
-            <Card className='product-card'>
+          renderProduct={(product, index) => 
+            <Card key={index} className='product-card'>
               <h3>{product.name}</h3>
               <p>${product.price}</p>
             </Card>
           }
         />
-        <div className="float-right flex flex-col gap-4 my-4">
+        <div className="flex flex-col gap-4 my-4 w-full items-end">
           <TablePagination />
           <TablePageSizeSelector />
         </div>

@@ -15,7 +15,7 @@ const Footer = () => {
         </div>
         <ul className="flex flex-col gap-4">
           {navList.map((item, index) => 
-            <Link to={item.link}><h4 key={index}>{item.name}</h4></Link>
+            <Link key={index} to={item.link}><h4>{item.name}</h4></Link>
           )}
         </ul>
       </div>

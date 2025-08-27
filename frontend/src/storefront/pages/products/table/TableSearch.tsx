@@ -8,7 +8,7 @@ interface TableSearchProps {
 const TableSearch = ({searchQuery, onChange, styles }: TableSearchProps) => {
   return (    
     <input 
-      className={`${styles} float-right border rounded px-3 py-2`}
+      className={`${styles} border rounded px-3 py-2 w-full md:w-1/3`}
       type="text"
       placeholder="Search..."
       value={searchQuery}
