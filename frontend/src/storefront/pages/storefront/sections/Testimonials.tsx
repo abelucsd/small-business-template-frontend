@@ -80,9 +80,9 @@ const Testimonials = () => {
   };
   
   return (
-    <section>
+    <section className="container mx-auto flex flex-col gap-12">
       <h2 className="container mx-auto">Reviews</h2>
-      <Slider {...settings} className="container mx-auto pb-10">
+      <Slider {...settings} className="container mx-auto pb-14">
         {reviewCards.map((card, index) =>
           <Card key={index} className="border size-60 p-10 gap-2 text-start rounded-xl place-self-center">            
             <div>

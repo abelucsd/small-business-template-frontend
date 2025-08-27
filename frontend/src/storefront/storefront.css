@@ -1,8 +1,12 @@
 @import "tailwindcss";
 @layer components {
   .product-card {
-  @apply border rounded-md w-full sm:w-48 md:w-64 lg:w-72 xl:w-80 aspect-[4/3] 
-    object-cover p-4
-    flex flex-col items-center gap-4
-}  
+    @apply border rounded-md w-full sm:w-48 md:w-64 lg:w-72 xl:w-80 aspect-[4/3] 
+      object-cover p-4
+      flex flex-col items-center gap-4
+  }  
+
+  .page-container {
+    @apply container mx-auto flex flex-col gap-8 py-8 md:py-8 px-2 md:px-0
+  }
 }

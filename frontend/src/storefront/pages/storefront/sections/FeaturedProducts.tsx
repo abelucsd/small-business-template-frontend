@@ -15,13 +15,16 @@ const featuredProducts = [
 
 const FeaturedProducts = () => {
   return (
-    <div className='flex flex-row justify-center gap-12'>      
-        {featuredProducts.map((card) => 
-          <Card className='product-card'>
-            <h2>{card.name}</h2>
-            <p>{card.price}</p>
-          </Card>
-        )}
+    <div className='container mx-auto flex flex-col gap-12'>
+      <h2>Featured Products</h2>
+      <div className='flex flex-row justify-center gap-12'>      
+          {featuredProducts.map((card) => 
+            <Card className='product-card'>
+              <h2>{card.name}</h2>
+              <p>{card.price}</p>
+            </Card>
+          )}
+      </div>
     </div>
   )
 };

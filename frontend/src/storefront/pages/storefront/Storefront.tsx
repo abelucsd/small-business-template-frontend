@@ -7,7 +7,7 @@ import Testimonials from './sections/Testimonials'
 
 const Storefront = () => {
   return (
-    <div>
+    <div className='flex flex-col gap-32'>
       <Hero />
       <FeaturedProducts />
       <Banner />

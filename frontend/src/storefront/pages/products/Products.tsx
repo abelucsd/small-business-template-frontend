@@ -23,8 +23,8 @@ const ViewProducts = () => {
 
 
   return (
-    <div className="container mx-auto flex flex-col gap-8 h-screen py-8 md:p-8 px-2">
-      <h2 className="">Products</h2>
+    <div className="page-container">
+      <h1 className="">Products</h1>
       <TableBase
         data={products}
         total={total}
