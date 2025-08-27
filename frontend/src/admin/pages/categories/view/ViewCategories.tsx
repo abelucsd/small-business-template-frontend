@@ -11,6 +11,7 @@ import TableCore from '../../../shared/components/table/TableCore';
 import TablePagination from '../../../shared/components/table/TablePagination';
 import TablePageSizeSelector from '../../../shared/components/table/TablePageSizeSelector';
 
+
 const ViewCategories = () => {
   const {
     categories,
@@ -72,8 +73,7 @@ const ViewCategories = () => {
         </div>
       ),
     })
-  ];
-
+  ];  
 
   return (
     <div className="container mx-auto flex flex-col gap-8 h-screen py-8 md:p-8 px-2">

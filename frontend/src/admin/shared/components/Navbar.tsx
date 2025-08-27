@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <nav className="      
       relative flex flex-row justify-between items-center 
-      shadow-xs border-b border-[#e5e7eb] h-16 px-6 bg-[var(--bg-nav)] z-100
+      shadow-xs border-b border-[#e5e7eb] h-16 px-6 bg-[var(--bg-nav-admin)] z-100
     ">
             
       <div className={`

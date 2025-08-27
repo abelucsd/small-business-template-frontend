@@ -4,7 +4,7 @@
   :root {
     --bg-color-primary: rgb(247, 245, 245);
     --nav-border: #e5e7eb;
-    --bg-nav: white;    
+    --bg-nav-admin: white;
     --bg-nav-dropdown: white;
     --bg-card: white;
     --color-table-border: #e5e7eb;

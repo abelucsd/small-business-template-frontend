@@ -1,6 +1,14 @@
 import type { QueryFunctionContext } from '@tanstack/react-query';
 import type { Product } from '../types';
+import type { ProductFormValues } from '../create/types';
 import apiClient from '../../../shared/api/apiClient';
+
+export async function createProduct(body: ProductFormValues) {
+
+  const response = await apiClient.post('/products/', body);
+
+  return response.data;
+};
 
 export const getProducts = async ({ queryKey }: QueryFunctionContext<[string, number, number, string]> ) 
   : Promise<{ data: Product[]; total: number }> => {
@@ -13,9 +21,9 @@ export const getProducts = async ({ queryKey }: QueryFunctionContext<[string, nu
       limit: pageSize,
       search: searchQuery,
     },
-  });
+  });  
   
-  return response.data;
+  return {data: response.data, total: response.data.length};
 };
 
 

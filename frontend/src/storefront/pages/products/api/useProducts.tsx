@@ -2,9 +2,7 @@ import '@tanstack/react-query';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import {
-  getProducts,
-  deleteProduct,
-  updateProduct,
+  getProducts,  
 } from './productsAPI';
 import type { Product } from '../types';
 
@@ -33,68 +31,6 @@ export const useProductsTableData = () => {
     placeholderData: (previousData) => previousData,
   });
 
-  const updateMutation = useMutation<string, Error, { id: string; updatedProduct: Partial<Product> }>({
-      mutationFn: updateProduct,
-      onSuccess: () => {
-        queryClient.invalidateQueries({
-            predicate: query => query.queryKey[0] === 'products',
-        });
-      },
-      onError: (error) => {
-        alert(error.message);
-      }
-    });
-
-  const handleUpdate = (id: string, updatedProduct: Partial<Product>) => {
-    updateMutation.mutate({id, updatedProduct});
-  };
-
-  const handleOpenEdit = (product: Product) => {
-    setSelectedProduct(product);
-    setIsUpdateOpen(true);
-  };
-  
-  const handleCloseEdit = () => {
-    setIsUpdateOpen(false);
-    setSelectedProduct(null);
-  };
-
-  const deleteMutation = useMutation<string, Error, string>({
-    mutationFn: deleteProduct,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-          predicate: query => query.queryKey[0] === 'products',
-      });
-      alert('product deleted successfully');
-    },
-    onError: (error) => {
-      alert(error.message);
-    },        
-  });
-
-  const handleDelete = (id: string) => {
-    deleteMutation.mutate(id);
-  };
-
-  const handleOpenConfirm = (id: string) => {
-    setSelectedProductId(id);
-    setDialogOpen(true);
-  };
-
-  const handleConfirmDelete = () => {
-    if (selectedProductId) {
-      handleDelete(selectedProductId); // your mutation call
-    }
-    setDialogOpen(false);
-    setSelectedProductId(null);
-  };
-
-  const handleCancelDelete = () => {
-    setDialogOpen(false);
-    setSelectedProductId(null);
-  };
-
-
 
   return {
     products: data?.data ?? defaultProductsData,
@@ -111,14 +47,7 @@ export const useProductsTableData = () => {
     setPageSize,
     setFilterQuery,
     setSearchQuery,  
-    handleOpenEdit,
-    handleCloseEdit,
-    handleUpdate,
     isUpdateOpen,
-    selectedProduct,
-    handleDelete,
-    handleOpenConfirm,
-    handleConfirmDelete,
-    handleCancelDelete,    
+    selectedProduct,    
   };
 };

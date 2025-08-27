@@ -42,6 +42,12 @@ export function UpdateProductModal({ isOpen, onClose, product, onUpdate }: Updat
     }
   };
 
+  if (product === null) {
+    return (
+      <></>
+    )
+  }
+
   return (
     <Dialog open={isOpen} onClose={onClose} className="fixed inset-0 z-10 overflow-y-auto">      
 
