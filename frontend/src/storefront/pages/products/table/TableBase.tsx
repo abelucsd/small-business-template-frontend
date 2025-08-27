@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import type { Product } from "../types";
 import { TableContext } from "./TableContext";
 
@@ -27,24 +28,32 @@ export const TableBase = ({
   styles
 }: TableBaseProps) => {
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   // helpers
   const getCanPreviousPage = pageIndex > 0;
   const getCanNextPage = pageIndex < Math.ceil(total / pageSize) - 1;  
 
-  const getProductsPerRow = () => {
-    const width = window.innerWidth;
+  const getProductsPerRow = () => {    
 
-    if (width >= 1024) return 4;
-    if (width >= 768) return 3;
-    if (width >= 640) return 2;
+    if (windowWidth >= 1024) return 4;
+    if (windowWidth >= 768) return 3;
+    if (windowWidth >= 640) return 2;
     return 1;
   }
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  })
   
 
   const tableContextValue = {
     products: data,
     total,
-    getProductsPerRow,
+    getProductsPerRow: () => getProductsPerRow(),
     
     // pagination
     pageIndex,

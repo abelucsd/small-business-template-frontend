@@ -15,7 +15,7 @@ export const getProducts = async ({ queryKey }: QueryFunctionContext<[string, nu
       filter: filterQuery,
       search: searchQuery,
     },
-  });
+  });  
   
-  return response.data;
+  return {data: response.data, total: response.data.total};
 };

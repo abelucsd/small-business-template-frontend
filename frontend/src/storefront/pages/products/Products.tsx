@@ -23,8 +23,8 @@ const ViewProducts = () => {
 
 
   return (
-    <div className="container mx-auto flex flex-col gap-8 h-screen py-8 md:p-8 px-2">
-      <h2 className="">Products</h2>
+    <div className="page-container w-full">
+      <h1 className="">Products</h1>
       <TableBase
         data={products}
         total={total}
@@ -35,16 +35,18 @@ const ViewProducts = () => {
         isLoading={isLoading}
         isError={isError}
       >
-        <TableSearch searchQuery={searchQuery} onChange={setSearchQuery}/>
+        <div className='flex flex-col items-end'>
+          <TableSearch searchQuery={searchQuery} onChange={setSearchQuery}/>
+        </div>
         <TableCore
-          renderProduct={(product) => 
-            <Card>
+          renderProduct={(product, index) => 
+            <Card key={index} className='product-card'>
               <h3>{product.name}</h3>
               <p>${product.price}</p>
             </Card>
           }
         />
-        <div className="float-right flex flex-col gap-4 my-4">
+        <div className="flex flex-col gap-4 my-4 w-full items-end">
           <TablePagination />
           <TablePageSizeSelector />
         </div>

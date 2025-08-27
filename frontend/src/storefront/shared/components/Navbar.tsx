@@ -17,7 +17,7 @@ const Navbar = () => {
            
             <ul className='hidden md:flex flex-row gap-10'>
                 {navList.map((item, index) => 
-                  <Link to={item.link}><h5 key={index}>{item.name}</h5></Link>
+                  <Link key={index} to={item.link}><h5>{item.name}</h5></Link>
                 )}
             </ul>
 

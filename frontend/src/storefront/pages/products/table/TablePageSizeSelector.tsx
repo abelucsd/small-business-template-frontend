@@ -8,7 +8,7 @@ const TablePageSizeSelector = () => {
     <select
       value={table.pageSize}
       onChange={e => table.setPageSize(Number(e.target.value))}
-      className="border rounded px-2 py-1"
+      className="border rounded px-2 py-1 w-full md:w-1/3"
     >
       {[5, 10, 20].map(size => (
         <option key={size} value={size}>

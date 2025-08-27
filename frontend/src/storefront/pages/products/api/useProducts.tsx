@@ -14,14 +14,6 @@ export const useProductsTableData = () => {
   const [pageSize, setPageSize] = useState(10);
   const [filterQuery, setFilterQuery] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
-  const [isUpdateOpen, setIsUpdateOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [isDialogOpen, setDialogOpen] = useState(false);
-  const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
-  
-
-
-  const queryClient = useQueryClient();
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['products', pageIndex, pageSize, filterQuery, searchQuery],
@@ -40,14 +32,10 @@ export const useProductsTableData = () => {
     pageIndex,
     pageSize,
     filterQuery,
-    searchQuery,    
-    isDialogOpen,
-    selectedProductId,
+    searchQuery,        
     setPageIndex,
     setPageSize,
     setFilterQuery,
-    setSearchQuery,  
-    isUpdateOpen,
-    selectedProduct,    
+    setSearchQuery,        
   };
 };
