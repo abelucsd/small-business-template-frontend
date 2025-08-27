@@ -17,11 +17,11 @@ const FeaturedProducts = () => {
   return (
     <div className='flex flex-row justify-center gap-12'>      
         {featuredProducts.map((card) => 
-          <Card>
+          <Card className='product-card'>
             <h2>{card.name}</h2>
             <p>{card.price}</p>
           </Card>
-        )}      
+        )}
     </div>
   )
 };

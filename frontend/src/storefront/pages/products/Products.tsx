@@ -38,7 +38,7 @@ const ViewProducts = () => {
         <TableSearch searchQuery={searchQuery} onChange={setSearchQuery}/>
         <TableCore
           renderProduct={(product) => 
-            <Card>
+            <Card className='product-card'>
               <h3>{product.name}</h3>
               <p>${product.price}</p>
             </Card>
