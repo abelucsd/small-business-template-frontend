@@ -8,6 +8,14 @@ import TermsAndConditions from './storefront/pages/informational/TermsAndConditi
 import Login from './storefront/pages/auth/Login';
 import Products from './storefront/pages/products/Products';
 
+// admin
+import AdminLayout from './admin/pages/AdminLayout';
+import Dashboard from './admin/pages/dashboard/Dashboard';
+import ViewProducts from './admin/pages/products/view/ViewProducts';
+import CreateProduct from './admin/pages/products/create/CreateProduct';
+import ViewCategories from './admin/pages/categories/view/ViewCategories';
+import CreateCategory from './admin/pages/categories/create/CreateCategory';
+
 
 function App() {  
 
@@ -24,13 +32,13 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/Products" element={<Products />} />            
           </Route>
-          {/* <Route path="/Admin/" element={<AdminLayout />}>
+          <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
-            <Route path="/Products/view" element={<ViewProducts />} />
-            <Route path="/Products/add" element={<CreateProduct />} />
-            <Route path="/Categories/view" element={<ViewCategories />} />
-            <Route path="/Categories/add" element={<CreateCategory />} />            
-          </Route> */}
+            <Route path="/admin/Products/view" element={<ViewProducts />} />
+            <Route path="/admin/Products/add" element={<CreateProduct />} />
+            <Route path="/admin/Categories/view" element={<ViewCategories />} />
+            <Route path="/admin/Categories/add" element={<CreateCategory />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>

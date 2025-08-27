@@ -119,7 +119,7 @@ const ViewProducts = () => {
         pageIndex={pageIndex}
         pageSize={pageSize}        
         setPageIndex={setPageIndex}
-        setPageSize={setPageSize}        
+        setPageSize={setPageSize}
         columns={columns}
         isLoading={isLoading}
         isError={isError}
@@ -144,7 +144,7 @@ const ViewProducts = () => {
         onConfirm={handleConfirmDelete}
         onCancel={handleCancelDelete}
       />
-    </div>    
+    </div>
   );
 
 };
