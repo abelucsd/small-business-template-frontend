@@ -4,7 +4,7 @@
   :root {
     --bg-color-primary: rgb(247, 245, 245);
     --nav-border: #e5e7eb;
-    --bg-nav: white;    
+    --bg-nav: black;    
     --bg-nav-dropdown: white;
     --bg-card: white;
     --color-table-border: #e5e7eb;
@@ -69,6 +69,21 @@
       font-size: var(--text-sm);
   }
 
+  /* edit width */
+  .btn-login {
+    box-shadow: var(--shadow-xs);    
+    border: 1px solid black;    
+    background-color: var(--color-primary);
+    padding-inline: --spacing(3);
+    padding-block: --spacing(1);
+    color: white;
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-white-variant);
+      }
+    }
+  }
+
   .btn-primary {
     box-shadow: var(--shadow-md);
     border-radius: calc(infinity * 1px);
@@ -81,7 +96,7 @@
             background-color: var(--color-primary-variant);
         }
     }
-  }
+  }  
 
   .btn-secondary {    
     box-shadow: var(--shadow-xs);
@@ -126,4 +141,21 @@
     disabled:shadow-none disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 
     dark:disabled:border-gray-700 dark:disabled:bg-gray-800/20;
   }
+
+  .fullbleed-wrapper {
+        display: grid;
+        grid-template-columns: 
+            1fr
+            min(42rem, 100%)
+            1fr;
+    }
+
+    .fullbleed-wrapper > * {
+        grid-column: 2;
+    }
+
+    .full-bleed {
+        @apply before:absolute before:left-1/2 before:-translate-x-1/2 
+        before:h-full before:top-0 before:w-screen before:h-14 before:-z-10;
+    }
 }
