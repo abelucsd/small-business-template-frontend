@@ -6,4 +6,6 @@ export type ProductFormValues = {
   salePrice: number;
   cost: number;
   description: string;
+  src: string;
+  alt: string;
 };
