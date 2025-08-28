@@ -47,10 +47,15 @@ const ViewProducts = () => {
         </div>
         <TableCore
           renderProduct={(product, index) => 
-            <Card key={index} className='product-card'>              
-              <div onClick={() => handleProductClick(product.id)}>
+            <Card key={index}>
+              <div className="product-card" onClick={() => handleProductClick(product.id)}>
+                <img 
+                  src={product.src}
+                  alt={product.alt}
+                  className="w-full h-auto rounded shadow"
+                />
                 <h3>{product.name}</h3>
-                <p>${product.price}</p>              
+                <p>${product.price}</p>
               </div>
             </Card>
           }
