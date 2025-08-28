@@ -1,17 +1,16 @@
+import type { Product } from "../types";
 
 interface ProductInfoProps {
-  name: string;
-  price: number;
-  description?: string;
+  product: Product;  
 }
 
-const ProductInfo = ({name, price, description}: ProductInfoProps) => {
+const ProductInfo = ({product}: ProductInfoProps) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <h2>{name}</h2>
-      <h3>{price}</h3>
-      <h4>{description}</h4>
+      <h2>{product.name}</h2>
+      <h3>{product.price}</h3>
+      <h4>{product.description}</h4>
     </div>
   )
 }

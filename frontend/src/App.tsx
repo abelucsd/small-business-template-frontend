@@ -15,6 +15,7 @@ import ViewProducts from './admin/pages/products/view/ViewProducts';
 import CreateProduct from './admin/pages/products/create/CreateProduct';
 import ViewCategories from './admin/pages/categories/view/ViewCategories';
 import CreateCategory from './admin/pages/categories/create/CreateCategory';
+import ProductDetail from './storefront/pages/products/ProductDetail';
 
 
 function App() {  
@@ -30,7 +31,8 @@ function App() {
             <Route path="/Privacy_Policy" element={<PrivacyPolicy />} />
             <Route path="/Terms_And_Conditions" element={<TermsAndConditions />} />
             <Route path="/Login" element={<Login />} />
-            <Route path="/Products" element={<Products />} />            
+            <Route path="/Products" element={<Products />} />
+            <Route path="/Products/:id" element={<ProductDetail />} />
           </Route>
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Dashboard />} />

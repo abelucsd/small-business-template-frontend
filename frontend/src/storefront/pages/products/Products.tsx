@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useProductsTableData } from './api/useProducts';
 import { TableBase } from './table/TableBase';
 import TableSearch from './table/TableSearch';
@@ -21,6 +22,12 @@ const ViewProducts = () => {
     setSearchQuery,    
   } = useProductsTableData();
 
+  const navigate = useNavigate();
+  const handleProductClick = (id: string) => {
+    // Navigate to ProductDetail page
+    navigate(`/products/${id}`);
+  };
+
 
   return (
     <div className="page-container w-full">
@@ -40,9 +47,11 @@ const ViewProducts = () => {
         </div>
         <TableCore
           renderProduct={(product, index) => 
-            <Card key={index} className='product-card'>
-              <h3>{product.name}</h3>
-              <p>${product.price}</p>
+            <Card key={index} className='product-card'>              
+              <div onClick={() => handleProductClick(product.id)}>
+                <h3>{product.name}</h3>
+                <p>${product.price}</p>              
+              </div>
             </Card>
           }
         />
