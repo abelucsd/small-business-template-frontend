@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Card from '../../../shared/components/Card';
 import type { Product } from '../../products/types';
 import { useFeaturedProducts } from '../api/useFeaturedProducts';
+import { useNavigate } from 'react-router-dom';
 
 // TODO: Get from backend
 const featuredProducts = [
@@ -23,10 +24,16 @@ const FeaturedProducts = () => {
     isError, 
   } = useFeaturedProducts();
 
+  const navigate = useNavigate();
+  const handleProductClick = (id: string) => {
+    // Navigate to ProductDetail page
+    navigate(`/products/${id}`);
+  };
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);  
 
   const getSlicedProducts = () => {
-    if (windowWidth >= 1024) return products.slice(0, 4);
+    if (windowWidth > 1024) return products.slice(0, 4);
     if (windowWidth >= 768) return products.slice(0, 3);
     if (windowWidth >= 640) return products.slice(0,2);
     return products.slice(0,2);
@@ -48,11 +55,17 @@ const FeaturedProducts = () => {
   return (
     <div className='container mx-auto flex flex-col gap-12'>
       <h2>Featured Products</h2>
-      <div className='flex flex-col md:flex-row justify-center gap-12'>      
+      <div className='flex flex-col md:flex-row justify-between'>      
           {getSlicedProducts().map((card) => 
-            <Card className='product-card'>
-              <h2>{card.name}</h2>
-              <p>{card.price}</p>
+            <Card>
+              <div className="product-card" onClick={() => handleProductClick(card.id)}>
+                <img 
+                  src={card.src}
+                  alt={card.alt}
+                />
+                <h2>{card.name}</h2>
+                <p>{card.price}</p>
+              </div>
             </Card>
           )}
       </div>
