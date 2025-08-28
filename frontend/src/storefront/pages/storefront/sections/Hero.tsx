@@ -1,3 +1,5 @@
+import { heroBannerImg } from "../../../utils/data";
+
 const Hero = () => {
     return (
         <section className="
@@ -18,7 +20,7 @@ const Hero = () => {
                     w-[600px] h-[400px] 
                     md:w-[1000px] md:h-[600px]
                     lg:rounded-4xl"
-                    src={''} 
+                    src={heroBannerImg} 
                 />
             </div>
         </section>
