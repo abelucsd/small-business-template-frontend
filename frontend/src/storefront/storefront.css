@@ -9,4 +9,9 @@
   .page-container {
     @apply container mx-auto flex flex-col gap-8 py-8 md:py-8 px-2 md:px-0
   }
+
+  .full-bleed::before {
+    @apply absolute w-screen bg-black;
+    content: '';
+  }  
 }

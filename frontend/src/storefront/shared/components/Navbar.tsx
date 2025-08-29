@@ -13,11 +13,11 @@ const Navbar = () => {
             top-0 z-50 sticky h-14 container mx-auto flex flex-row items-center justify-between h-14 text-white
             px-2 lg:px-3 xl:px-0 full-bleed before:bg-[var(--bg-nav)]
         '>
-            <Link to={'/'}><h3>Template</h3></Link>
+            <Link to={'/'}><h2>Template</h2></Link>
            
             <ul className='hidden md:flex flex-row gap-10'>
                 {navList.map((item, index) => 
-                  <Link key={index} to={item.link}><h5>{item.name}</h5></Link>
+                  <Link key={index} to={item.link}><h3>{item.name}</h3></Link>
                 )}
             </ul>
 

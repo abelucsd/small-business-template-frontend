@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useProductsTableData } from './api/useProducts';
 import { TableBase } from './table/TableBase';
 import TableSearch from './table/TableSearch';
@@ -6,6 +6,8 @@ import TablePagination from './table/TablePagination';
 import TablePageSizeSelector from './table/TablePageSizeSelector';
 import TableCore from './table/TableCore';
 import Card from '../../shared/components/Card';
+import { useEffect, useState } from "react";
+import type { Product } from "./types";
 
 
 const ViewProducts = () => {
@@ -22,18 +24,32 @@ const ViewProducts = () => {
     setSearchQuery,    
   } = useProductsTableData();
 
+  const [activeProducts, setActiveProducts] = useState<Product[]>(products);
+
   const navigate = useNavigate();
   const handleProductClick = (id: string) => {
     // Navigate to ProductDetail page
-    navigate(`/products/${id}`);
+    navigate(`/Products/${id}`);
   };
 
+  const { categoryName } = useParams<{ categoryName: string }>();
+  
+  useEffect(() => {
+    // filter by category
+    console.log(categoryName)
+    if (categoryName !== undefined) {
+      setActiveProducts(products.filter(p => p.category === categoryName));      
+      console.log(categoryName)
+    } else {
+      setActiveProducts(products);
+    }
+  }, [categoryName, products]);
 
   return (
     <div className="page-container w-full">
       <h1 className="">Products</h1>
       <TableBase
-        data={products}
+        data={activeProducts}
         total={total}
         pageIndex={pageIndex}
         pageSize={pageSize}        
