@@ -8,6 +8,7 @@ import TableCore from './table/TableCore';
 import Card from '../../shared/components/Card';
 import { useEffect, useState } from "react";
 import type { Product } from "./types";
+import Filterbar from "../../shared/components/Filterbar";
 
 
 const ViewProducts = () => {
@@ -46,43 +47,46 @@ const ViewProducts = () => {
   }, [categoryName, products]);
 
   return (
-    <div className="page-container w-full">
-      <h1 className="">Products</h1>
-      <TableBase
-        data={activeProducts}
-        total={total}
-        pageIndex={pageIndex}
-        pageSize={pageSize}        
-        setPageIndex={setPageIndex}
-        setPageSize={setPageSize}
-        isLoading={isLoading}
-        isError={isError}
-      >
-        <div className='flex flex-col items-end'>
-          <TableSearch searchQuery={searchQuery} onChange={setSearchQuery}/>
-        </div>
-        <TableCore
-          renderProduct={(product, index) => 
-            <Card key={index}>
-              <div className="product-card" onClick={() => handleProductClick(product.id)}>
-                <img 
-                  src={product.src}
-                  alt={product.alt}
-                  className="w-full h-auto rounded shadow"
-                />
-                <h3>{product.name}</h3>
-                <p>${product.price}</p>
-              </div>
-            </Card>
-          }
-        />
-        <div className="flex flex-col gap-4 my-4 w-full items-end">
-          <TablePagination />
-          <TablePageSizeSelector />
-        </div>
-      </TableBase>
+    <div>
+      <Filterbar />    
+      <div className="page-container w-full">        
+        <h1 className="">Products</h1>
+        <TableBase
+          data={activeProducts}
+          total={total}
+          pageIndex={pageIndex}
+          pageSize={pageSize}        
+          setPageIndex={setPageIndex}
+          setPageSize={setPageSize}
+          isLoading={isLoading}
+          isError={isError}
+        >
+          <div className='flex flex-col items-end'>
+            <TableSearch searchQuery={searchQuery} onChange={setSearchQuery}/>
+          </div>
+          <TableCore
+            renderProduct={(product, index) => 
+              <Card key={index}>
+                <div className="product-card" onClick={() => handleProductClick(product.id)}>
+                  <img 
+                    src={product.src}
+                    alt={product.alt}
+                    className="w-full h-auto rounded shadow"
+                  />
+                  <h3>{product.name}</h3>
+                  <p>${product.price}</p>
+                </div>
+              </Card>
+            }
+          />
+          <div className="flex flex-col gap-4 my-4 w-full items-end">
+            <TablePagination />
+            <TablePageSizeSelector />
+          </div>
+        </TableBase>
 
-    </div>    
+      </div>    
+    </div>
   );
 
 };
