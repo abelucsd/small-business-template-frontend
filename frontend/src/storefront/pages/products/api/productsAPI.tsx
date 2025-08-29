@@ -17,5 +17,5 @@ export const getProducts = async ({ queryKey }: QueryFunctionContext<[string, nu
     },
   });  
   
-  return {data: response.data, total: response.data.total};
+  return {data: response.data.products, total: response.data.total};
 };

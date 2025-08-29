@@ -21,7 +21,7 @@ export const getCategories = async ({ queryKey }: QueryFunctionContext<[string, 
     },
   });  
 
-  return {data: response.data, total: response.data.length}
+  return {data: response.data.categories, total: response.data.total}
 };
 
 
