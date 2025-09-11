@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { useNavigate, useParams } from "react-router-dom";
+=======
+import { useNavigate } from "react-router-dom";
+>>>>>>> styles: modify the spacing in the product pages.
 import { useProductsTableData } from './api/useProducts';
 import { TableBase } from './table/TableBase';
 import TableSearch from './table/TableSearch';
@@ -25,6 +29,7 @@ const ViewProducts = () => {
     setSearchQuery,    
   } = useProductsTableData();
 
+<<<<<<< HEAD
   const [activeProducts, setActiveProducts] = useState<Product[]>(products);
 
   const navigate = useNavigate();
@@ -87,6 +92,48 @@ const ViewProducts = () => {
 
       </div>    
     </div>
+=======
+  const navigate = useNavigate();
+  const handleProductClick = (id: string) => {
+    // Navigate to ProductDetail page
+    navigate(`/products/${id}`);
+  };
+
+
+  return (
+    <div className="page-container w-full">
+      <h1 className="">Products</h1>
+      <TableBase
+        data={products}
+        total={total}
+        pageIndex={pageIndex}
+        pageSize={pageSize}        
+        setPageIndex={setPageIndex}
+        setPageSize={setPageSize}
+        isLoading={isLoading}
+        isError={isError}
+      >
+        <div className='flex flex-col items-end'>
+          <TableSearch searchQuery={searchQuery} onChange={setSearchQuery}/>
+        </div>
+        <TableCore
+          renderProduct={(product, index) => 
+            <Card key={index} className='product-card'>              
+              <div onClick={() => handleProductClick(product.id)}>
+                <h3>{product.name}</h3>
+                <p>${product.price}</p>              
+              </div>
+            </Card>
+          }
+        />
+        <div className="flex flex-col gap-4 my-4 w-full items-end">
+          <TablePagination />
+          <TablePageSizeSelector />
+        </div>
+      </TableBase>
+
+    </div>    
+>>>>>>> styles: modify the spacing in the product pages.
   );
 
 };
