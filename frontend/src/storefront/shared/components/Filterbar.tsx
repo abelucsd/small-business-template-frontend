@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useCategories } from "../api/useCategories";
 import { useEffect, useState } from "react";
 
+
 const Filterbar = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
 
