@@ -1,20 +1,7 @@
 import { useEffect, useState } from 'react';
 import Card from '../../../shared/components/Card';
-import type { Product } from '../../products/types';
 import { useFeaturedProducts } from '../api/useFeaturedProducts';
 import { useNavigate } from 'react-router-dom';
-
-// TODO: Get from backend
-const featuredProducts = [
-  {
-    name: "Test Prod 1",
-    price: 4.99,
-  },
-  {
-    name: "Test Prod 2",
-    price: 9.99,
-  }
-];
 
 
 const FeaturedProducts = () => {
