@@ -56,8 +56,8 @@ const FeaturedProducts = () => {
     <div className='container mx-auto flex flex-col gap-12'>
       <h2>Featured Products</h2>
       <div className='flex flex-col md:flex-row justify-between'>      
-          {getSlicedProducts().map((card) => 
-            <Card>
+          {getSlicedProducts().map((card, index) => 
+            <Card key={index}>
               <div className="product-card" onClick={() => handleProductClick(card.id)}>
                 <img 
                   src={card.src}
