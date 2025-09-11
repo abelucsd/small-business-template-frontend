@@ -25,7 +25,7 @@ const Filterbar = () => {
   };
 
   return (
-    <div className="container mx-auto flex flex-row justify-between items-center h-10 relative full-bleed before:border-t before:border-white">
+    <div className="container mx-auto flex flex-row justify-between items-center h-10 relative full-bleed before:border-t before:border-white z-100">
       {categories.map((category, index) => (
         <p className="text-white" key={index} onClick={() => handleProductClick(category.name)}>{category.name}</p>
       ))}

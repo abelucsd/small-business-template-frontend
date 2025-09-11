@@ -23,7 +23,7 @@ const LoginForm = () => {
       <LoginFormInputs register={register} errors={errors} />
             
       <button 
-        className="btn-login w-full md:w-[300px]"
+        className="btn-login w-full md:w-[400px]"
         type="submit"
       >
         Login
