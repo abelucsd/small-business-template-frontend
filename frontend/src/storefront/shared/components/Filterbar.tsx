@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useCategories } from "../api/useCategories";
 
+
 const Filterbar = () => {
   const {
     categories,
