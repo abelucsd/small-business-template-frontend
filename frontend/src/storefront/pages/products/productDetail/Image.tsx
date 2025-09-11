@@ -7,7 +7,7 @@ interface ProductImageProps {
 
 const ProductImage = ({src, alt, className}: ProductImageProps) => {
   return (
-    <div className={`${className} flex-shrink-0 w-full md:w-1/2`}>
+    <div className={`${className} flex-shrink-0 w-full md:w-1/2 xl:w-2/5`}>
       <img 
         src={src}
         alt={alt}

@@ -117,6 +117,37 @@ const ProductFormInputs = ({register, errors}: ProductFormInputsProps) => {
             <p>{errors.description.message}</p>
           )}
       </label>
+      <label>
+          <h3>src:</h3>
+          <input           
+            type="text" 
+            {...register("src", {
+              required: "Image src is required",
+              minLength: { value: 3, message: "Min length is 3" },
+            })}
+            required
+            className="block border rounded-md w-full md:w-[300px] grow mt-4 py-2 pr-3 pl-1 textr-black placeholder:text-gray-500 focus:outline-none sm:text-sm/6 "
+          />
+          {errors.category && (
+            <p>{errors.category.message}</p>
+          )}
+      </label>
+      <label>
+          <h3>src:</h3>
+          <input           
+            type="text" 
+            {...register("alt", {
+              required: "Image alt is required",
+              minLength: { value: 3, message: "Min length is 3" },
+            })}
+            required
+            className="block border rounded-md w-full md:w-[300px] grow mt-4 py-2 pr-3 pl-1 textr-black placeholder:text-gray-500 focus:outline-none sm:text-sm/6 "
+          />
+          {errors.category && (
+            <p>{errors.category.message}</p>
+          )}
+      </label>
+
 
     </div>
   )

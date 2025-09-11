@@ -1,9 +1,11 @@
 export type Product = {
+  id: string;
   name: string;
   price: number;
   category: string;
   src: string;
   alt: string;
+  description: string;
 }
 
 export type TableContextValue = {
