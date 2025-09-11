@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { navList } from '../../utils/data';
 import { TfiAlignJustify } from "react-icons/tfi";
 import NavbarMobile from './NavbarMobile';
@@ -7,6 +7,20 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+    
+    useEffect(() => {
+        const handleTouchMove = (e: TouchEvent) => {
+            if (!isMenuOpen) return;
+            e.preventDefault(); // block touch scroll on main page
+        };
+
+        document.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+        return () => {
+            document.removeEventListener('touchmove', handleTouchMove);
+        };
+    }, [isMenuOpen]);
+    
 
     return (        
         <nav className='
@@ -25,9 +39,16 @@ const Navbar = () => {
             <button className='md:hidden z-10' onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 {isMenuOpen == false ? <TfiAlignJustify /> : <h5>X</h5> }
             </button>
-            {isMenuOpen &&
-                <NavbarMobile />
-            }
+            <div className={`
+                absolute z-150 top-full left-0
+                ${isMenuOpen ? 'translate-x-0': 'max-[1280px]:-translate-x-full xl:hidden'}
+                transition-transform duration-300 ease-in-out w-screen h-screen
+            `}>
+                <NavbarMobile
+                    styles={"border-t border-[#e5e7eb] w-screen h-screen"}
+                    onLinkClick={() => setIsMenuOpen(false)}
+                />                
+            </div>           
         </nav>
     );
 };
