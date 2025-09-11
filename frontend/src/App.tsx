@@ -32,7 +32,10 @@ function App() {
             <Route path="/Terms_And_Conditions" element={<TermsAndConditions />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Products" element={<Products />} />
+<<<<<<< HEAD
             <Route path="/Products/Category/:categoryName" element={<Products />} />
+=======
+>>>>>>> styles: modify the spacing in the product pages.
             <Route path="/Products/:id" element={<ProductDetail />} />
           </Route>
           <Route path="/admin" element={<AdminLayout />}>
