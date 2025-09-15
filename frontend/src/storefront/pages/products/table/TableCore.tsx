@@ -1,6 +1,6 @@
 import { useTableContext } from "./TableContext";
 import type { Product } from "../types";
-import { useEffect } from "react";
+
 
 interface TableCoreProps {    
   renderProduct: (product: Product, index: number) => React.ReactNode;

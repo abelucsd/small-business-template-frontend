@@ -6,10 +6,6 @@ import ProductInfo from "./productDetail/Info";
 import ProductOrder from "./productDetail/Order";
 import type { Product } from "./types";
 
-interface ProductDetailProps {
-  product: Product;
-  onAddToCart?: (product: Product) => void;
-}
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
