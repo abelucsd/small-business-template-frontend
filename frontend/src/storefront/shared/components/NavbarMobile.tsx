@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { navList } from '../../utils/data';
 import { useCategories } from '../api/useCategories';
 import { Link, useNavigate } from 'react-router-dom';

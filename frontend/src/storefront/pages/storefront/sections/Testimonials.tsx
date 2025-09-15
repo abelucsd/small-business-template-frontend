@@ -19,7 +19,7 @@ function SampleNextArrow(props:any) {
   const { className, style, onClick } = props;
   return (
     <FontAwesomeIcon
-      className={`border rounded-xl p-1 absolute bottom-0 left-10 cursor-pointer`}
+      className={`${className} border rounded-xl p-1 absolute bottom-0 left-10 cursor-pointer`}
       style={{ ...style, display: "block"}}
       onClick={onClick}
       icon={faArrowRight}
@@ -31,7 +31,7 @@ function SamplePrevArrow(props:any) {
   const { className, style, onClick } = props;
   return (
     <FontAwesomeIcon
-      className={`border rounded-xl p-1 absolute bottom-0 cursor-pointer`}
+      className={`${className} border rounded-xl p-1 absolute bottom-0 cursor-pointer`}
       style={{ ...style, display: "block"}}
       onClick={onClick}
       icon={faArrowLeft}
