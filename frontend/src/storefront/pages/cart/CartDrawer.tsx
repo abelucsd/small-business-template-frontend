@@ -10,6 +10,7 @@ const CartDrawer = () => {
 
   const {
     items,
+    totalItems,
     totalUniqueItems,
     updateItemQuantity,
     removeItem,    
@@ -21,10 +22,6 @@ const CartDrawer = () => {
   const handleCheckoutClick = () => {
     navigate('/Checkout/');
   };
-
-  useEffect(() => {
-    console.log(items)
-  }, [items])
 
 
   return (
@@ -76,7 +73,7 @@ const CartDrawer = () => {
         <div className="flex justify-between mx-4">
           <div className="w-1/3"></div>
           <div className="flex flex-row justify-end w-1/3">
-            <h3>Subtotal: $300</h3>
+            <h3>Subtotal ({totalItems}): $300</h3>
           </div>
         </div>        
         

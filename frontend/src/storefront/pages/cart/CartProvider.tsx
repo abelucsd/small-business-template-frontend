@@ -3,9 +3,10 @@ import type { Product } from '../products/types';
 
 
 type CartContextType = {
-  items: {[id: string]: {item: Product, quantity: number}},
-  addItem: (item: Product, quantity: number) => void;
-  totalUniqueItems: number;
+  items: {[id: string]: {item: Product, quantity: number}};
+  totalUniqueItems: number;  
+  totalItems: number;
+  addItem: (item: Product, quantity: number) => void;  
   isEmpty: () => void;
   updateItemQuantity: (id: string, quantity: number) => void;
   removeItem: (id: string) => void;
@@ -20,6 +21,18 @@ export const CartProvider = ({children}: {children: React.ReactNode}) => {
     const stored = localStorage.getItem("cartList");
     return stored ? JSON.parse(stored): {};
   });
+
+  const totalItems = useMemo(() => {
+    const itemsArray = Object.entries(items) as [string, {item: Product; quantity: number}][];
+    let numItems = 0;
+    console.log(itemsArray)
+    itemsArray.forEach(([id, { item, quantity }]) => {
+      console.log(`quantity: ${quantity}`)
+      numItems = numItems + quantity;
+    });
+    return numItems;
+  }, [items]);
+  
   const totalUniqueItems = useMemo(() => Object.keys(items).length, [items]);
 
   useEffect(() => {
@@ -74,7 +87,7 @@ export const CartProvider = ({children}: {children: React.ReactNode}) => {
 
 
   return (
-    <CartContext.Provider value={{items, addItem, removeItem, isEmpty, totalUniqueItems, updateItemQuantity}}>
+    <CartContext.Provider value={{items, addItem, removeItem, isEmpty, totalItems, totalUniqueItems, updateItemQuantity}}>
       {children}
     </CartContext.Provider>
   );

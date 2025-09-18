@@ -11,7 +11,7 @@ const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
     const {
-        totalUniqueItems
+        totalItems
     } = useCartContext();
     
     useEffect(() => {
@@ -43,9 +43,9 @@ const Navbar = () => {
                 </ul>
                 <Link to={'/Cart'} className="p-1">
                     <FiShoppingCart size={22} />
-                    {totalUniqueItems > 0 && (
+                    {totalItems > 0 && (
                         <span className="absolute top-1 -right-1 flex items-center justify-center px-1.5 py-0.5 text-xs font-semibold text-white bg-red-600 rounded-full">
-                            {totalUniqueItems}
+                            {totalItems}
                         </span>
                     )}
                 </Link>
