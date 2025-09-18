@@ -5,7 +5,7 @@ import type { Product } from '../products/types';
 type CartContextType = {
   items: {[id: string]: {item: Product, quantity: number}},
   addItem: (item: Product, quantity: number) => void;
-  totalUniqueItems: () => void;
+  totalUniqueItems: number;
   isEmpty: () => void;
   updateItemQuantity: (id: string, quantity: number) => void;
   removeItem: (id: string) => void;
@@ -17,6 +17,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({children}: {children: React.ReactNode}) => {
   const [items, setItems] = useState<{[id: string]: {item: Product, quantity: number}}>({});
+  const totalUniqueItems =  Object.keys(items).length;
 
   const addItem = (item: Product, quantity: number) => {
     try {
@@ -44,7 +45,7 @@ export const CartProvider = ({children}: {children: React.ReactNode}) => {
   
   const isEmpty = () => Object.keys(items).length === 0;    
 
-  const totalUniqueItems = () => Object.keys(items).length;
+  
 
   const updateItemQuantity = (id: string, quantity: number) => {
     try {
