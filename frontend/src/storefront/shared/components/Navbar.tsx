@@ -1,12 +1,18 @@
+import { TfiAlignJustify } from "react-icons/tfi";
+import { FiShoppingCart } from "react-icons/fi";
 import { useEffect, useState } from 'react';
 import { navList } from '../../utils/data';
-import { TfiAlignJustify } from "react-icons/tfi";
 import NavbarMobile from './NavbarMobile';
 import { Link } from 'react-router-dom';
+import { useCartContext } from "../../pages/cart/CartProvider";
 
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+    const {
+        totalUniqueItems
+    } = useCartContext();
     
     useEffect(() => {
         const handleTouchMove = (e: TouchEvent) => {
@@ -29,11 +35,21 @@ const Navbar = () => {
         '>
             <Link to={'/'}><h2>Template</h2></Link>
            
-            <ul className='hidden md:flex flex-row gap-10'>
-                {navList.map((item, index) => 
-                  <Link key={index} to={item.link}><h3>{item.name}</h3></Link>
-                )}
-            </ul>
+            <div className="hidden md:flex flex-row gap-10">
+                <ul className='hidden md:flex flex-row gap-10'>
+                    {navList.map((item, index) => 
+                        <Link key={index} to={item.link}><h3>{item.name}</h3></Link>
+                    )}
+                </ul>
+                <Link to={'/Cart'} className="p-1">
+                    <FiShoppingCart size={22} />
+                    {totalUniqueItems > 0 && (
+                        <span className="absolute top-1 -right-1 flex items-center justify-center px-1.5 py-0.5 text-xs font-semibold text-white bg-red-600 rounded-full">
+                            {totalUniqueItems}
+                        </span>
+                    )}
+                </Link>
+            </div>
 
             {/* Mobile Navbar */}
             <button className='md:hidden z-10' onClick={() => setIsMenuOpen(!isMenuOpen)}>
