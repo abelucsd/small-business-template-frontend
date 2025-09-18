@@ -17,8 +17,8 @@ const CartDrawer = () => {
 
   // TODO: Create Checkout page
   const handleCheckoutClick = () => {
-    navigate('/Checkout/')
-  }
+    navigate('/Checkout/');
+  };
 
 
   return (
@@ -28,7 +28,7 @@ const CartDrawer = () => {
       {/* Checkout */}
       <div className="flex flex-row justify-between">
         <h3>Total Items: {totalUniqueItems}</h3>
-        <button onClick={() => handleCheckoutClick}>
+        <button onClick={handleCheckoutClick}>
           Checkout
         </button>
       </div>

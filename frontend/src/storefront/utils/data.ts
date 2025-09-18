@@ -1,5 +1,5 @@
-export const API_URL = import.meta.env.VITE_API_URL;
-// export const API_URL = 'http://localhost:4000/';
+// export const API_URL = import.meta.env.VITE_API_URL;
+export const API_URL = 'http://localhost:4000/';
 
 export { default as heroBannerImg }  from '../../assets/images/hero-banner-ecommerce.png';
 

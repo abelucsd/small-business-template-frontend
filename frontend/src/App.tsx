@@ -16,6 +16,8 @@ import CreateProduct from './admin/pages/products/create/CreateProduct';
 import ViewCategories from './admin/pages/categories/view/ViewCategories';
 import CreateCategory from './admin/pages/categories/create/CreateCategory';
 import ProductDetail from './storefront/pages/products/ProductDetail';
+import CartDrawer from './storefront/pages/cart/CartDrawer';
+import Checkout from './storefront/pages/cart/Checkout';
 
 
 function App() {  
@@ -34,6 +36,8 @@ function App() {
             <Route path="/Products" element={<Products />} />
             <Route path="/Products/Category/:categoryName" element={<Products />} />
             <Route path="/Products/:id" element={<ProductDetail />} />
+            <Route path="/Cart" element={<CartDrawer />} />
+            <Route path="/Checkout" element={<Checkout />} />
           </Route>
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
