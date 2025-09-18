@@ -1,11 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useCartContext } from "./CartProvider"
+import AddressForm from "./AddressForm";
+import type { AddressFormValues } from "./types";
 
 const Checkout = () => {
   const {
     items,
     totalUniqueItems,
   } = useCartContext();
+
+  const [addressInfo, setAddressInfo] = useState<AddressFormValues | undefined>(undefined);
+  const [isAddingAddress, setIsAddingAddress] = useState<boolean>(false);
+
+  const handleAddAddress = () => {
+    setIsAddingAddress(true);
+  };
+
 
   const itemsArray = Object.entries(items);
   let totalItemsPrice = 0;
@@ -20,7 +30,7 @@ const Checkout = () => {
     // TODO: region component to calculate tax and shipping.    
     tax = totalItemsPrice * .10;
   }, [itemsArray])
-
+  
 
   return (
     <div className="container mx-auto">
@@ -38,6 +48,22 @@ const Checkout = () => {
       </div>
 
       {/* Show delivery address */}
+      {addressInfo !== undefined ? (        
+        <div>
+          <p>{addressInfo.name}</p>
+          <p>{addressInfo.phone}</p>
+          <p>{addressInfo.address}</p>
+          <div>
+            <p>{addressInfo.city}</p>
+            <p>{addressInfo.state}</p>
+            <p>{addressInfo.zipCode}</p>
+          </div>
+        </div>
+      ) : isAddingAddress                    
+        ? ( <AddressForm setAddressInfo={setAddressInfo}/> )
+        : (<button onClick={handleAddAddress}>Add Address</button> )
+      }
+      
 
       {/* Show payment information */}
 
