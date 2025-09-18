@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { Product } from '../products/types';
 
 
@@ -15,12 +15,21 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 
-export const CartProvider = ({children}: {children: React.ReactNode}) => {
-  const [items, setItems] = useState<{[id: string]: {item: Product, quantity: number}}>({});
-  const totalUniqueItems =  Object.keys(items).length;
+export const CartProvider = ({children}: {children: React.ReactNode}) => {  
+  const [items, setItems] = useState<{[id: string]: {item: Product, quantity: number}}>(() => {
+    const stored = localStorage.getItem("cartList");
+    return stored ? JSON.parse(stored): {};
+  });
+  const totalUniqueItems = useMemo(() => Object.keys(items).length, [items]);
+
+  useEffect(() => {
+    console.log(items)
+    localStorage.setItem("cartList", JSON.stringify(items));
+  }, [items])
 
   const addItem = (item: Product, quantity: number) => {
     try {
+      console.log("Adding item")
       setItems(prev => ({
         ...prev,
         [item.id]: { item: item, quantity: quantity },
@@ -43,7 +52,7 @@ export const CartProvider = ({children}: {children: React.ReactNode}) => {
     }
   };
   
-  const isEmpty = () => Object.keys(items).length === 0;    
+  const isEmpty = () => useMemo(() => Object.keys(items).length === 0, [totalUniqueItems]);
 
   
 

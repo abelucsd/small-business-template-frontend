@@ -18,6 +18,7 @@ import CreateCategory from './admin/pages/categories/create/CreateCategory';
 import ProductDetail from './storefront/pages/products/ProductDetail';
 import CartDrawer from './storefront/pages/cart/CartDrawer';
 import Checkout from './storefront/pages/cart/Checkout';
+import { CartProvider } from './storefront/pages/cart/CartProvider';
 
 
 function App() {  
@@ -25,6 +26,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <CartProvider>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Storefront />} />
@@ -47,6 +49,7 @@ function App() {
             <Route path="/admin/Categories/add" element={<CreateCategory />} />
           </Route>
         </Routes>
+        </CartProvider>
       </BrowserRouter>
     </>
   )

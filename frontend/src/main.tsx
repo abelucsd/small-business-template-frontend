@@ -5,9 +5,7 @@ import App from './App.tsx'
 import { CartProvider } from './storefront/pages/cart/CartProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <CartProvider>
-      <App />
-    </CartProvider>
+  <StrictMode>    
+      <App />    
   </StrictMode>,
 )

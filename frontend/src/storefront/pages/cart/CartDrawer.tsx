@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import { IoTrash } from "react-icons/io5";
 import Card from "../../shared/components/Card";
 import { useCartContext } from "./CartProvider"
 import { useNavigate } from "react-router-dom";
+
 
 const CartDrawer = () => {
   const navigate = useNavigate();
@@ -19,6 +21,10 @@ const CartDrawer = () => {
   const handleCheckoutClick = () => {
     navigate('/Checkout/');
   };
+
+  useEffect(() => {
+    console.log(items)
+  }, [items])
 
 
   return (
