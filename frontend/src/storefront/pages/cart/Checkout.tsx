@@ -1,20 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useCartContext } from "./CartProvider"
-import AddressForm from "./AddressForm";
-import type { AddressFormValues } from "./types";
+import AddressInfo from "./AddressInfo";
+import OrderPrice from "./OrderPrice";
 
 const Checkout = () => {
   const {
     items,
+    totalItems,
     totalUniqueItems,
   } = useCartContext();
-
-  const [addressInfo, setAddressInfo] = useState<AddressFormValues | undefined>(undefined);
-  const [isAddingAddress, setIsAddingAddress] = useState<boolean>(false);
-
-  const handleAddAddress = () => {
-    setIsAddingAddress(true);
-  };
 
 
   const itemsArray = Object.entries(items);
@@ -33,36 +27,19 @@ const Checkout = () => {
   
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto my-12 flex flex-col justify-between gap-8">
+      <h1>Secure Checkout</h1>
+
       {/* Place your oder at the top */}
-      <button className="border rounded-lg bg-yellow-500">
+      <button className="border rounded-lg bg-yellow-300 w-full">
         Place your order
       </button>
 
-      {/* Show price, shipping, tax and total */}
-      <div>
-        <p>Items ({totalUniqueItems}): {totalItemsPrice}</p>
-        <p>Shipping & handling: {shipping} </p>
-        <p>Estimated tax to be collected: {tax}</p>
-        <h1>Order Total: {totalItemsPrice + shipping + tax}</h1>
-      </div>
-
-      {/* Show delivery address */}
-      {addressInfo !== undefined ? (        
-        <div>
-          <p>{addressInfo.name}</p>
-          <p>{addressInfo.phone}</p>
-          <p>{addressInfo.address}</p>
-          <div>
-            <p>{addressInfo.city}</p>
-            <p>{addressInfo.state}</p>
-            <p>{addressInfo.zipCode}</p>
-          </div>
-        </div>
-      ) : isAddingAddress                    
-        ? ( <AddressForm setAddressInfo={setAddressInfo}/> )
-        : (<button onClick={handleAddAddress}>Add Address</button> )
-      }
+      <div className="flex flex-row justify-between">
+        <AddressInfo />
+        {/* Show price, shipping, tax and total */}
+        <OrderPrice totalItems={totalItems} totalItemsPrice={totalItemsPrice} shipping={shipping} tax={tax}/>        
+      </div>      
       
 
       {/* Show payment information */}

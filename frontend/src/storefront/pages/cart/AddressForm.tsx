@@ -18,16 +18,21 @@ const AddressForm = ({setAddressInfo}: AddressFormProps) => {
   };
   
   return (
-    <form onSubmit={handleSubmit(onAddressSubmit)}>
+    <form 
+      className="flex flex-col gap-10"
+      onSubmit={handleSubmit(onAddressSubmit)}
+    >
       
       {/* Button: Set Address */}  
       <AddressFormInputs register={register} errors={errors} />
-      <button 
-        className='border bg-yellow-500 rounded pd-2'
-        type='submit'
-      >
-        Set Address
-      </button>
+      <div className="w-1/2">
+        <button 
+          className='border rounded-xl bg-gray-200 hover:bg-gray-400 hover:shadow-sm px-2 py-1'
+          type='submit'
+        >
+          Set Address
+        </button>
+      </div>
     </form>
   )
 }
