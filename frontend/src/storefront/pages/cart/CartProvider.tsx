@@ -27,8 +27,7 @@ export const CartProvider = ({children}: {children: React.ReactNode}) => {
     const itemsArray = Object.entries(items) as [string, {item: Product; quantity: number}][];
     let numItems = 0;
     console.log(itemsArray)
-    itemsArray.forEach(([id, { item, quantity }]) => {
-      console.log(`quantity: ${quantity}`)
+    itemsArray.forEach(([, {quantity }]) => {
       numItems = numItems + quantity;
     });
     return numItems;

@@ -40,7 +40,7 @@ const Checkout = () => {
   useEffect(() => {
     let totalItemsPrice = 0
     const itemsArray = Object.entries(items);
-    itemsArray.forEach(([id, {item, quantity}]) => {
+    itemsArray.forEach(([, {item, quantity}]) => {
       totalItemsPrice = totalItemsPrice + (item.price * quantity);      
     })
       

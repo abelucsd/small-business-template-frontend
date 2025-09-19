@@ -5,7 +5,6 @@ import ProductImage from "./productDetail/Image";
 import ProductInfo from "./productDetail/Info";
 import ProductOrder from "./productDetail/Order";
 import type { Product } from "./types";
-import { useCartContext } from "../cart/CartProvider";
 
 
 const ProductDetail = () => {
@@ -13,9 +12,7 @@ const ProductDetail = () => {
   const {
     products
   } = useProductsTableData();
-  const [product, setProduct] = useState<Product|undefined>(undefined);
-
-  const {addItem} = useCartContext();
+  const [product, setProduct] = useState<Product|undefined>(undefined);  
 
   useEffect(() => {
     const selected = products.find(p => p.id === id);
