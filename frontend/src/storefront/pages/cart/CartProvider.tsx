@@ -10,6 +10,7 @@ type CartContextType = {
   isEmpty: () => void;
   updateItemQuantity: (id: string, quantity: number) => void;
   removeItem: (id: string) => void;
+  clearItems: () => void;
 };
 
 
@@ -64,10 +65,16 @@ export const CartProvider = ({children}: {children: React.ReactNode}) => {
       console.error(err);
     }
   };
-  
-  const isEmpty = () => useMemo(() => Object.keys(items).length === 0, [totalUniqueItems]);
 
+  const clearItems = () => {
+    try {
+      setItems({});      
+    } catch (err) {
+      console.error(err);
+    }
+  };
   
+  const isEmpty = () => useMemo(() => Object.keys(items).length === 0, [totalUniqueItems]);  
 
   const updateItemQuantity = (id: string, quantity: number) => {
     try {
@@ -80,6 +87,9 @@ export const CartProvider = ({children}: {children: React.ReactNode}) => {
           [id]: { ...prev[id], quantity }
         };
       });
+      if (quantity === 0) {
+        removeItem(id);
+      }
     } catch (err) {
       console.error(err);
     }
@@ -87,7 +97,7 @@ export const CartProvider = ({children}: {children: React.ReactNode}) => {
 
 
   return (
-    <CartContext.Provider value={{items, addItem, removeItem, isEmpty, totalItems, totalUniqueItems, updateItemQuantity}}>
+    <CartContext.Provider value={{items, addItem, removeItem, isEmpty, totalItems, totalUniqueItems, updateItemQuantity, clearItems}}>
       {children}
     </CartContext.Provider>
   );

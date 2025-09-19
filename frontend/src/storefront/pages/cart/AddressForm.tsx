@@ -3,7 +3,7 @@ import type { AddressFormValues } from "./types";
 import AddressFormInputs from "./AddressFormInputs";
 
 interface AddressFormProps {
-  setAddressInfo: React.Dispatch<React.SetStateAction<AddressFormValues | undefined>>;
+  setAddressInfo: (newAddress: AddressFormValues) => void;
 };
 
 const AddressForm = ({setAddressInfo}: AddressFormProps) => {

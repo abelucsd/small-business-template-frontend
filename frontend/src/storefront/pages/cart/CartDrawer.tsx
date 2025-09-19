@@ -31,7 +31,7 @@ const CartDrawer = () => {
       <div className="flex flex-row justify-between">
         <h3 className="w-1/3">Total Items: {totalItems}</h3>
         <div className="w-1/3">          
-          <button onClick={handleCheckoutClick} className="border rounded-xl bg-yellow-300 px-2 float-right">
+          <button onClick={handleCheckoutClick} className="rounded-xl bg-yellow-300 hover:bg-yellow-400 px-2 py-1 float-right">
             Checkout
           </button>
         </div>
