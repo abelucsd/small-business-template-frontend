@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { IoTrash } from "react-icons/io5";
 import Card from "../../shared/components/Card";
 import { useCartContext } from "./CartProvider"

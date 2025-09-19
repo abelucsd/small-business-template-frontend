@@ -10,8 +10,7 @@ interface PaymentFormProps {
 
 
 const PaymentForm = ({addressInfo}: PaymentFormProps) => {
-  const [error, setError] = useState<string | null>(null);
-  // const [isDisabled, setIsDisabled] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);  
 
   const { items } = useCartContext();  
   const dummyCart = Object.values(items).map( entry => entry.item);

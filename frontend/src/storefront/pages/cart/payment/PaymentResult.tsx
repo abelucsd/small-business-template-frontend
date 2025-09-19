@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../CartProvider'
 
-type Props = {}
 
-const PaymentResult = (props: Props) => {
+const PaymentResult = () => {
   const {
     clearItems
   } = useCartContext();
