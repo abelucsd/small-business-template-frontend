@@ -12,7 +12,7 @@ const ProductDetail = () => {
   const {
     products
   } = useProductsTableData();
-  const [product, setProduct] = useState<Product|undefined>(undefined);
+  const [product, setProduct] = useState<Product|undefined>(undefined);  
 
   useEffect(() => {
     const selected = products.find(p => p.id === id);
@@ -38,7 +38,7 @@ const ProductDetail = () => {
         <ProductImage src={product.src} alt={product.alt} />
         <div className="flex flex-col gap-8 lg:w-1/3 xl:w-1/2">
           <ProductInfo product={product} />
-          <ProductOrder product={product} onAddToCart={() => {}} />
+          <ProductOrder product={product} />
         </div>
       </div>
 
