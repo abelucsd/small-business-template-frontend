@@ -82,10 +82,10 @@ const Testimonials = () => {
   return (
     <section className="container mx-auto flex flex-col gap-12">
       <h2 className="container mx-auto">Reviews</h2>
-      <Slider {...settings} className="container mx-auto pb-14">
+      <Slider {...settings} className="container mx-auto py-8">
         {reviewCards.map((card, index) =>
-          <Card key={index} className="border size-60 p-10 gap-2 text-start rounded-xl place-self-center">            
-            <div>
+          <Card key={index} className="shadow-xl border-4 size-60 p-10 gap-2 text-start place-self-center">            
+            <div className="flex flex-col gap-4">
               <p>{card.title}</p>
               <p className="line-clamp-4">{card.text}</p>
             </div>
