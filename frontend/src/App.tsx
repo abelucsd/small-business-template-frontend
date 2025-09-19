@@ -1,12 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
-import axios from 'axios';
-import { Elements } from "@stripe/react-stripe-js";
 
 import {CheckoutProvider} from '@stripe/react-stripe-js/checkout';
 import {loadStripe} from '@stripe/stripe-js';
-
-import { API_URL } from './storefront/utils/data';
-
 import Layout from './storefront/pages/Layout';
 import Storefront from './storefront/pages/storefront/Storefront';
 import About from './storefront/pages/informational/About';
