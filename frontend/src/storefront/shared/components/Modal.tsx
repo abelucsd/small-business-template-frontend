@@ -25,10 +25,6 @@ interface CustomModalProps {
 const CustomModal = ({ header, onResult}: CustomModalProps) => {
   const [modalIsOpen, setIsOpen] = useState<boolean>(true);
 
-  const openModal = () => {
-    setIsOpen(true);
-  }
-
   const afterOpenModal = () => {
     
   }
