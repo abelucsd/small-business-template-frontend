@@ -25,10 +25,6 @@ interface CustomModalProps {
 const CustomModal = ({ header, onResult}: CustomModalProps) => {
   const [modalIsOpen, setIsOpen] = useState<boolean>(true);
 
-  const afterOpenModal = () => {
-    
-  }
-
   const closeModal = (result: boolean) => {
     onResult(result);
     setIsOpen(false);    
@@ -37,8 +33,7 @@ const CustomModal = ({ header, onResult}: CustomModalProps) => {
 
   return (
     <Modal
-      isOpen={modalIsOpen}
-      onAfterOpen={afterOpenModal}      
+      isOpen={modalIsOpen}      
       style={modalStyles}        
     >       
       <div className="flex flex-col justify-between h-full py-2 px-2">
