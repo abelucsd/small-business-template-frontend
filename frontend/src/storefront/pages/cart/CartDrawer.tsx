@@ -16,6 +16,8 @@ const CartDrawer = () => {
 
   const itemsArray = Object.entries(items);
 
+  const totalPrice = Object.values(items).reduce((acc, entry) => acc + entry.item.price * entry.quantity, 0);
+
   // TODO: Create Checkout page
   const handleCheckoutClick = () => {
     navigate('/Checkout/');
@@ -71,7 +73,7 @@ const CartDrawer = () => {
         <div className="flex justify-between mx-4">
           <div className="w-1/3"></div>
           <div className="flex flex-row justify-end w-1/3">
-            <h3>Subtotal ({totalItems}): $300</h3>
+            <h3>Subtotal ({totalItems}): {totalPrice}</h3>
           </div>
         </div>        
         
