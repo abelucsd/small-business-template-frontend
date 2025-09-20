@@ -24,6 +24,7 @@ import Checkout from './storefront/pages/cart/Checkout';
 import { CartProvider } from './storefront/pages/cart/CartProvider';
 import apiClient from './storefront/shared/api/apiClient';
 import PaymentResult from './storefront/pages/cart/payment/PaymentResult';
+import { useEffect } from 'react';
 
 
 // Stripe Payment
@@ -41,6 +42,10 @@ const options = { fetchClientSecret }
 
 
 function App() {  
+
+  useEffect(() => {
+    document.title = "Ecommerce Template"
+  }, []);
 
   return (
     <>
