@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Modal from "react-modal";
 import { useCartContext } from "../../cart/CartProvider";
 import type { Product } from "../types";

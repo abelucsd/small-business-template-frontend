@@ -1,11 +1,16 @@
+import CustomModal from "../../shared/components/Modal";
 import { IoTrash } from "react-icons/io5";
 import Card from "../../shared/components/Card";
 import { useCartContext } from "./CartProvider"
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import type { Product } from "../products/types";
 
 
 const CartDrawer = () => {
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<Product | undefined>(undefined);
 
   const {
     items,
@@ -18,9 +23,21 @@ const CartDrawer = () => {
 
   const totalPrice = Number(Object.values(items).reduce((acc, entry) => acc + entry.item.price * entry.quantity, 0).toFixed(2));
 
-  // TODO: Create Checkout page
+  
   const handleCheckoutClick = () => {
     navigate('/Checkout/');
+  };
+
+  const handleModalResult = (result: boolean) => {
+    if (result) {
+      if (selectedItem) {
+        removeItem(selectedItem.id);
+        setSelectedItem(undefined);        
+      }      
+    } else {
+      setSelectedItem(undefined);
+    }
+    setIsModalOpen(false);
   };
 
 
@@ -63,9 +80,12 @@ const CartDrawer = () => {
                     <p>{quantity}</p>
                     <p><button onClick={() => updateItemQuantity(id, quantity + 1)}>+</button></p>
                   </div>
-                  <p><button onClick={() => removeItem(id)}><IoTrash size={20} /></button></p>
+                  <p><button onClick={() => {
+                    setSelectedItem(item)
+                    setIsModalOpen(true);
+                  }}><IoTrash size={20} /></button></p>
                 </div>
-              </div>              
+              </div>
             </div>
           </Card>
         )}
@@ -75,9 +95,12 @@ const CartDrawer = () => {
           <div className="flex flex-row justify-end w-1/3">
             <h3>Subtotal ({totalItems}): ${totalPrice}</h3>
           </div>
-        </div>        
+        </div>
         
-      </div>      
+      </div>
+      { isModalOpen &&
+        <CustomModal header={"Are you sure you want to remove the product(s) from the cart?"} onResult={handleModalResult} />
+      }
     </div>
   )
 }
