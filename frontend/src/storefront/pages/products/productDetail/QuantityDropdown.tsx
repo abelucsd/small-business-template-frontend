@@ -12,7 +12,7 @@ const QuantityDropdown = ({quantity, handleQuantityChange}: QuantityDropdownProp
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const hanldeClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
@@ -20,8 +20,8 @@ const QuantityDropdown = ({quantity, handleQuantityChange}: QuantityDropdownProp
         setIsOpen(false);
       }
     };
-    document.addEventListener("mousedown", hanldeClickOutside);
-    return () => document.removeEventListener("mousedown", hanldeClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
 

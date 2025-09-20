@@ -24,7 +24,7 @@ const ProductOrder = ({product, styles}: ProductOrderProps) => {
         <QuantityDropdown quantity={quantity} handleQuantityChange={handleQuantityChange} />       
       </div>
       <button
-        onClick={() => addItem(product, 1)}
+        onClick={() => addItem(product, quantity)}
         className={`${styles} bg-blue-600 text-white w-full px-4 py-2 rounded hover:bg-blue-700`}
       >
         Add to Cart
