@@ -76,12 +76,19 @@ const CartDrawer = () => {
                 </div>
                 <div className="flex flex-row justify-between">
                   <div className="flex flex-row justify-between gap-4">
-                    <p><button onClick={() => updateItemQuantity(id, quantity - 1)}>-</button></p>
+                    <p><button onClick={() => {
+                      if (quantity === 1) {
+                        setSelectedItem(item);
+                        setIsModalOpen(true);
+                      } else {
+                        updateItemQuantity(id, quantity - 1);
+                      }                      
+                    }}>-</button></p>
                     <p>{quantity}</p>
                     <p><button onClick={() => updateItemQuantity(id, quantity + 1)}>+</button></p>
                   </div>
                   <p><button onClick={() => {
-                    setSelectedItem(item)
+                    setSelectedItem(item);
                     setIsModalOpen(true);
                   }}><IoTrash size={20} /></button></p>
                 </div>
