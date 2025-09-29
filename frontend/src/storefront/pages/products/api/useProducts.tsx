@@ -9,10 +9,14 @@ import type { Product } from '../types';
 
 const defaultProductsData: Product[] = [];
 
-export const useProductsTableData = () => {
+interface useProductsTableDataProps {
+  filterQuery: string;
+}
+
+export const useProductsTableData = ({filterQuery}: useProductsTableDataProps) => {
   const [pageIndex, setPageIndex] = useState(0);
   const [pageSize, setPageSize] = useState(10);
-  const [filterQuery, setFilterQuery] = useState('');
+  // const [filterQuery, setFilterQuery] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
 
   const { data, isLoading, isError } = useQuery({
@@ -34,8 +38,7 @@ export const useProductsTableData = () => {
     filterQuery,
     searchQuery,        
     setPageIndex,
-    setPageSize,
-    setFilterQuery,
+    setPageSize,    
     setSearchQuery,        
   };
 };
