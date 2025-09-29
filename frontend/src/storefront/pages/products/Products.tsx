@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useProductsTableData } from './api/useProducts';
 import { TableBase } from './table/TableBase';
 import TableSearch from './table/TableSearch';
@@ -12,6 +12,12 @@ import Filterbar from "../../shared/components/Filterbar";
 
 
 const ViewProducts = () => {
+  const [pageTitle, setPageTitle] = useState<string>("All Products");
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get("search") || "";
+  const category = searchParams.get("category") || "";
+
+  
   const {
     products,
     total,
@@ -19,11 +25,15 @@ const ViewProducts = () => {
     isError,
     pageIndex,
     pageSize,
-    searchQuery,    
+    searchQuery,        
     setPageIndex,
     setPageSize,
     setSearchQuery,    
-  } = useProductsTableData();
+  } = useProductsTableData({
+    filterQuery: category,
+  });
+
+  const { categoryName } = useParams<{ categoryName: string }>();
 
   const [activeProducts, setActiveProducts] = useState<Product[]>(products);
 
@@ -33,7 +43,7 @@ const ViewProducts = () => {
     navigate(`/Products/${id}`);
   };
 
-  const { categoryName } = useParams<{ categoryName: string }>();
+  
   
   useEffect(() => {
     // filter by category
@@ -41,8 +51,14 @@ const ViewProducts = () => {
     if (categoryName !== undefined) {
       setActiveProducts(products.filter(p => p.category === categoryName));      
       console.log(categoryName)
+      setPageTitle(categoryName)
     } else {
-      setActiveProducts(products);
+      if (search !== "") {
+        setActiveProducts(products.filter(p => p.name.toLowerCase().includes(search.toLowerCase())));
+          // p.category.some( category => category.toLowerCase().includes(search.toLowerCase()))));
+      } else {
+        setActiveProducts(products);
+      }  
     }
   }, [categoryName, products]);
 
@@ -50,7 +66,7 @@ const ViewProducts = () => {
     <div>
       <Filterbar />    
       <div className="page-container w-full">        
-        <h1 className="">Products</h1>
+        <h1 className="">{pageTitle}</h1>
         <TableBase
           data={activeProducts}
           total={total}
@@ -67,7 +83,7 @@ const ViewProducts = () => {
           <TableCore
             renderProduct={(product, index) => 
               <Card key={index}>
-                <div className="product-card" onClick={() => handleProductClick(product.id)}>
+                <div className="product-card" onClick={() => handleProductClick(product._id)}>
                   <img 
                     src={product.src}
                     alt={product.alt}

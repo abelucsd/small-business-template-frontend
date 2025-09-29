@@ -1,23 +1,38 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useProductsTableData } from "./api/useProducts";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import ProductImage from "./productDetail/Image";
 import ProductInfo from "./productDetail/Info";
 import ProductOrder from "./productDetail/Order";
 import type { Product } from "./types";
+import { getProductById } from "./api/productsAPI";
 
 
 const ProductDetail = () => {
+  const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
-  const {
-    products
-  } = useProductsTableData();
-  const [product, setProduct] = useState<Product|undefined>(undefined);  
+  const [product, setProduct] = useState<Product|undefined>(undefined);
+
+  const handleBreadcrumbClick = () => {
+    navigate(`/Products?search=${product?.categoryId._id}`);
+  }
+
 
   useEffect(() => {
-    const selected = products.find(p => p.id === id);
-    setProduct(selected)
-  }, [])  
+    const getProduct = async (id: string) => {
+      try {
+        const product = await getProductById(id);
+        setProduct(product);
+        return product;
+      } catch (error) {
+        console.error(`Error in fetching product ${id}`);        
+      }
+    }
+
+    if (id) {
+      getProduct(id);      
+    }
+
+  }, [id])
 
   if (!product) {
     return <div>Loading...</div>
@@ -31,7 +46,10 @@ const ProductDetail = () => {
 
       {/* breadcrumbs */}
       <nav>
-        Home &gt; {product.category} &gt; {product.name}
+        <Link to={`/Products?category=${product?.categoryId._id}`} className="hover.underline">
+          {product.categoryId.name}
+        </Link> 
+        &gt; {product.name}
       </nav>
       
       <div className="flex flex-col lg:flex-row justify-between">

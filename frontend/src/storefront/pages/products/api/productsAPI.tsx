@@ -19,3 +19,12 @@ export const getProducts = async ({ queryKey }: QueryFunctionContext<[string, nu
   
   return {data: response.data.products, total: response.data.total};
 };
+
+
+export const getProductById = async(id: string) => {
+  const response = await apiClient.get(`/products/${id}`);
+  console.log(response)
+  console.log(response.data)
+  
+  return response.data;
+}
