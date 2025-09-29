@@ -10,7 +10,7 @@ export type Product = {
   description: string;
 }
 
-export type TableContextValue = {
+export type ProductsTableContextValue = {
   products: Product[];
   total: number;
   getProductsPerRow: () => number;

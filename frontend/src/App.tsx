@@ -60,8 +60,7 @@ function App() {
                 <Route path="/Privacy_Policy" element={<PrivacyPolicy />} />
                 <Route path="/Terms_And_Conditions" element={<TermsAndConditions />} />
                 <Route path="/Login" element={<Login />} />
-                <Route path="/Products" element={<Products />} />
-                <Route path="/Products/Category/:categoryName" element={<Products />} />
+                <Route path="/Products" element={<Products />} />            
                 <Route path="/Products/:id" element={<ProductDetail />} />
                 <Route path="/Cart" element={<CartDrawer />} />
                 <Route path="/Checkout" element={<Checkout />} />

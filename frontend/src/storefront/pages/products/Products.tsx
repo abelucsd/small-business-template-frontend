@@ -1,5 +1,5 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useProductsTableData } from './api/useProducts';
+import { Link, useParams, useSearchParams } from "react-router-dom";
+import { useProductsTableData } from "./api/useProducts";
 import { TableBase } from './table/TableBase';
 import TableSearch from './table/TableSearch';
 import TablePagination from './table/TablePagination';
@@ -12,6 +12,12 @@ import Filterbar from "../../shared/components/Filterbar";
 
 
 const ViewProducts = () => {
+  const [pageTitle, setPageTitle] = useState<string>("All Products");
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get("search") || "";
+  const category = searchParams.get("category") || "";
+  const { categoryName } = useParams<{ categoryName: string }>();  
+  
   const {
     products,
     total,
@@ -19,21 +25,16 @@ const ViewProducts = () => {
     isError,
     pageIndex,
     pageSize,
-    searchQuery,    
+    searchQuery,        
     setPageIndex,
     setPageSize,
     setSearchQuery,    
-  } = useProductsTableData();
+  } = useProductsTableData({
+    filterQuery: category,
+  });
 
-  const [activeProducts, setActiveProducts] = useState<Product[]>(products);
+  const [activeProducts, setActiveProducts] = useState<Product[]>(products);  
 
-  const navigate = useNavigate();
-  const handleProductClick = (id: string) => {
-    // Navigate to ProductDetail page
-    navigate(`/Products/${id}`);
-  };
-
-  const { categoryName } = useParams<{ categoryName: string }>();
   
   useEffect(() => {
     // filter by category
@@ -41,8 +42,14 @@ const ViewProducts = () => {
     if (categoryName !== undefined) {
       setActiveProducts(products.filter(p => p.category === categoryName));      
       console.log(categoryName)
+      setPageTitle(categoryName)
     } else {
-      setActiveProducts(products);
+      if (search !== "") {
+        setActiveProducts(products.filter(p => p.name.toLowerCase().includes(search.toLowerCase())));
+          // p.category.some( category => category.toLowerCase().includes(search.toLowerCase()))));
+      } else {
+        setActiveProducts(products);
+      }  
     }
   }, [categoryName, products]);
 
@@ -50,7 +57,7 @@ const ViewProducts = () => {
     <div>
       <Filterbar />    
       <div className="page-container w-full">        
-        <h1 className="">Products</h1>
+        <h1 className="">{pageTitle}</h1>
         <TableBase
           data={activeProducts}
           total={total}
@@ -67,15 +74,15 @@ const ViewProducts = () => {
           <TableCore
             renderProduct={(product, index) => 
               <Card key={index}>
-                <div className="product-card" onClick={() => handleProductClick(product.id)}>
+                <Link to={`/Products/${product._id}`} className="product-card">
                   <img 
-                    src={product.src}
-                    alt={product.alt}
-                    className="w-full h-auto rounded shadow"
-                  />
+                      src={product.src}
+                      alt={product.alt}
+                      className="w-full h-auto rounded shadow"
+                    />
                   <h3>{product.name}</h3>
                   <p>${product.price}</p>
-                </div>
+                </Link>                                                  
               </Card>
             }
           />
