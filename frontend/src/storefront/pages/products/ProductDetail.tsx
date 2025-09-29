@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ProductImage from "./productDetail/Image";
 import ProductInfo from "./productDetail/Info";
 import ProductOrder from "./productDetail/Order";
@@ -7,14 +7,9 @@ import type { Product } from "./types";
 import { getProductById } from "./api/productsAPI";
 
 
-const ProductDetail = () => {
-  const navigate = useNavigate();
+const ProductDetail = () => {  
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product|undefined>(undefined);
-
-  const handleBreadcrumbClick = () => {
-    navigate(`/Products?search=${product?.categoryId._id}`);
-  }
 
 
   useEffect(() => {
