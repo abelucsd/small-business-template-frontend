@@ -45,7 +45,7 @@ const FeaturedProducts = () => {
       <div className='flex flex-col md:flex-row justify-between'>      
           {getSlicedProducts().map((card, index) => 
             <Card key={index}>
-              <div className="product-card" onClick={() => handleProductClick(card.id)}>
+              <div className="product-card" onClick={() => handleProductClick(card._id)}>
                 <img 
                   src={card.src}
                   alt={card.alt}
